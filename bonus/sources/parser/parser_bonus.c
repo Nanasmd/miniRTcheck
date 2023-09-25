@@ -6,7 +6,7 @@
 /*   By: nasamadi <nasamadi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/21 11:25:31 by nasamadi          #+#    #+#             */
-/*   Updated: 2023/09/22 19:14:38 by nasamadi         ###   ########.fr       */
+/*   Updated: 2023/09/24 19:49:03 by nasamadi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,7 +30,7 @@ bool	identifying(t_world *world, char **tokens, int count[2])
 		return (parse_texture(world->shapes, tokens));
 	if (!nc_strcmp(tokens[0], "co"))
 		return (parse_cone(world->shapes, tokens));
-	return (ERROR("Error parsing entities"), false);
+	return (error("Error parsing entities"), false);
 }
 
 void	parse_map(t_world *world, char **map, int counters[2])
@@ -60,7 +60,7 @@ t_world	*parse(char *filename)
 		message(NULL, ERROR_NOT_RT);
 	world = world_new();
 	if (!world)
-		message(NULL, ERROR_MALLOC("t_world struct"));
+		message(NULL, ERROR_MALLOC);
 	world->map = read_map(world, filename);
 	if (nc_matrix_size(world->map) == 0)
 		message(world, ERROR_EMPTY_MAP);

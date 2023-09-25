@@ -6,7 +6,7 @@
 /*   By: nasamadi <nasamadi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/21 11:25:46 by nasamadi          #+#    #+#             */
-/*   Updated: 2023/09/21 11:25:47 by nasamadi         ###   ########.fr       */
+/*   Updated: 2023/09/25 13:23:56 by nasamadi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,9 +57,9 @@ t_color	diffuse(t_light *bulb, t_hit *inter)
 	double	attenuation;
 
 	light_dir = vec3_sub(bulb->center, inter->point);
-	attenuation = MIN(1.0, 90.0 / vec3_length(light_dir));
+	attenuation = min(1.0, 90.0 / vec3_length(light_dir));
 	cos_angle = vec3_cossine(inter->normal, light_dir);
-	diff_ratio = MAX(0.0, KD * bulb->ratio * cos_angle * attenuation);
+	diff_ratio = max(0.0, KD * bulb->ratio * cos_angle * attenuation);
 	diff_color = color_mult(inter->color, diff_ratio);
 	diff_color = color_mix(diff_color, bulb->color);
 	return (diff_color);
@@ -74,12 +74,12 @@ t_color	specular(t_light *bulb, t_hit *closest)
 	double	cosine;
 
 	if (closest->shape->shininess < 1.0)
-		return (BLACK);
+		return (black());
 	light_dir = vec3_sub(bulb->center, closest->point);
 	camera_dir = vec3_scale(closest->ray.direction, -1);
 	camera_dir = vec3_normalize(camera_dir);
 	half_vector = vec3_normalize(vec3_add(camera_dir, light_dir));
-	cosine = MAX(0.0, vec3_dot(half_vector, closest->normal));
+	cosine = max(0.0, vec3_dot(half_vector, closest->normal));
 	spec_ratio = closest->shape->ks * bulb->ratio * pow(cosine,
 			closest->shape->shininess);
 	return (color_mix(color_mult(closest->color, spec_ratio), bulb->color));

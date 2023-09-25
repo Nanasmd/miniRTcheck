@@ -6,7 +6,7 @@
 /*   By: nasamadi <nasamadi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/21 11:26:18 by nasamadi          #+#    #+#             */
-/*   Updated: 2023/09/21 11:26:19 by nasamadi         ###   ########.fr       */
+/*   Updated: 2023/09/24 20:20:13 by nasamadi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,6 +38,16 @@ void	compute_shapes_constants(t_vector *shapes)
 			co->base = vec3_add(co->tip, vec3_scale(co->normal, co->height));
 		}
 	}
+}
+
+float	radians(float degrees)
+{
+	return ((degrees * PI) / 180.0f);
+}
+
+float	degrees(float radians)
+{
+	return ((radians * 180.0f) / PI);
 }
 
 double	determinant(t_equation *eq)

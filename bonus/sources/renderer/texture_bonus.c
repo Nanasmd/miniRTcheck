@@ -6,7 +6,7 @@
 /*   By: nasamadi <nasamadi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/21 11:26:08 by nasamadi          #+#    #+#             */
-/*   Updated: 2023/09/21 11:26:09 by nasamadi         ###   ########.fr       */
+/*   Updated: 2023/09/24 20:00:04 by nasamadi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,7 +47,7 @@ void	apply_texture(t_hit *closest)
 	point = closest->point;
 	get_uv(&closest->shape->data, point, &u, &v);
 	if ((int)(floor(u) + floor(v)) % 2)
-		closest->color = BLACK;
+		closest->color = black();
 	else
-		closest->color = WHITE;
+		closest->color = white();
 }

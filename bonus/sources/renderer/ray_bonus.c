@@ -6,7 +6,7 @@
 /*   By: nasamadi <nasamadi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/21 11:25:55 by nasamadi          #+#    #+#             */
-/*   Updated: 2023/09/21 11:25:56 by nasamadi         ###   ########.fr       */
+/*   Updated: 2023/09/24 20:56:45 by nasamadi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,9 +14,12 @@
 
 void	init_viewport(t_world *w)
 {
-	w->wview = tan(RADIANS(w->camera.fov / 2.0));
-	w->hview = w->wview / RATIO;
-	w->right = vec3_normalize(vec3_cross(w->camera.normal, UPGUIDE));
+	t_vec3	upguide;
+
+	upguide = (t_vec3){0.0, 1.0, 0.0};
+	w->wview = tan(radians(w->camera.fov / 2.0));
+	w->hview = w->wview / ratio();
+	w->right = vec3_normalize(vec3_cross(w->camera.normal, upguide));
 	w->up = vec3_normalize(vec3_cross(w->camera.normal, w->right));
 	w->right = vec3_normalize(vec3_cross(w->camera.normal, w->up));
 }
@@ -28,7 +31,7 @@ t_vec3	pixels_to_viewport(int x, int y)
 	double	height;
 
 	width = WIDTH;
-	height = HEIGHT;
+	height = WIDTH / ratio();
 	converted.x = ((2.0f * x) / width) - 1;
 	converted.y = ((2.0f * y) / height) - 1;
 	converted.z = 0;

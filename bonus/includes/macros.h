@@ -6,7 +6,7 @@
 /*   By: nasamadi <nasamadi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/21 11:21:40 by nasamadi          #+#    #+#             */
-/*   Updated: 2023/09/22 15:39:37 by nasamadi         ###   ########.fr       */
+/*   Updated: 2023/09/24 20:50:41 by nasamadi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,8 +25,8 @@
 
 //! Debug related macros
 
-# define DEBUG
-# define HERE 		printf("HERE\n");
+/*# define DEBUG
+# define HERE 		printf("HERE\n");*/
 
 //! Parsing macros
 
@@ -43,8 +43,6 @@
 //! Math macros 
 
 # define PI 3.1415926535f
-# define RADIANS(deg) ((deg * PI) / 180.0f)
-# define DEGREES(rad) ((rad * 180.0f) / PI)
 # define EPSILON 0.0001
 
 //! Menu movement macros
@@ -63,31 +61,6 @@
 
 //! Error macros
 
-# define ERROR(m)	\
-	printf("Error\n%s\n", m)
-# define ERROR_NUM_ARGS(x, n)		\
-	ERROR("Wrong number of args in "x" (need "n")")
-# define ERROR_NUM_COMMAS(x)		\
-	ERROR("Too many/few commas in "x)
-# define ERROR_MISFORMAT_COLOR(x)	\
-	ERROR("Colors misformatting in "x)
-# define ERROR_AMBIENT_RATIO_OUT_OF_BOUNDS		\
-	ERROR("Ambient coefficient out of bounds [0.0,1.0]")
-# define ERROR_CAMERA_FOV_OUT_OF_BOUNDS			\
-	ERROR("FOV coefficient out of bounds [0.0,1.0]")
-# define ERROR_LIGHT_BRIGHTNESS_OUT_OF_BOUNDS	\
-	ERROR("Light brightness out of bounds [0.0,1.0]")
-# define ERROR_NORMAL_OUT_OF_BOUNDS(x)	\
-	ERROR("Normal vector fields out of bounds in "x"[-1.0,1.0]")
-# define ERROR_KS_OUT_OF_BOUNDS(x)				\
-	ERROR("Specular coefficient out of bounds in "x" [0.0,1.0]")
-# define ERROR_SHININESS_OUT_OF_BOUNDS(x)		\
-	ERROR("Shininess out of bounds in "x" [0.0,+∞[")
-# define ERROR_VALUES_TOO_SMALL(x)				\
-	ERROR("Values are too small in "x)
-# define ERROR_UNKNOWN_SHAPE				\
-	ERROR("Unknown shape to apply texture")
-
 # define ERROR_SYNTAX		"Syntax: file format misconfiguration."
 # define ERROR_NOT_RT		"File extension is not '.rt'."
 # define ERROR_OPEN_FILE	"Couldn't open requested file"
@@ -99,21 +72,21 @@
 
 //! Fixed t_color structs
 
-# define WHITE		(t_color){0, 255, 255, 255}
+/*# define WHITE		(t_color){0, 255, 255, 255}
 # define BLACK		(t_color){0, 0, 0, 0}
 # define BLUE		(t_color){0, 0, 0, 255}
 # define RED		(t_color){0, 255, 0, 0}
 # define GREEN		(t_color){0, 0, 255, 0}
 # define YELLOW		(t_color){0, 255, 255, 0}
 # define PINK		(t_color){0, 255, 0, 255}
-# define CYAN		(t_color){0, 0, 255, 255}
+# define CYAN		(t_color){0, 0, 255, 255}*/
 
 //! Fixed t_vec3 structs
 
-# define UPGUIDE		(t_vec3){0.0, 1.0, 0.0}
+/*# define UPGUIDE		(t_vec3){0.0, 1.0, 0.0}
 # define VEC_MIN		(t_vec3){-1.0001, -1.0001, -1.0001}
 # define VEC_MAX		(t_vec3){1.0001, 1.0001, 1.0001}
-# define VEC_EPSILON	(t_vec3){EPSILON, EPSILON, EPSILON}
+# define VEC_EPSILON	(t_vec3){EPSILON, EPSILON, EPSILON}*/
 
 //! Viewport and window macros
 
@@ -123,8 +96,8 @@
 #  define WIDTH 1920
 # endif
 
-# define RATIO 	(16.0/9.0)
-# define HEIGHT (WIDTH/RATIO)
+/*# define RATIO 	(16.0/9.0)
+# define HEIGHT (WIDTH/RATIO)*/
 
 //! Minilibx events
 
@@ -153,10 +126,10 @@
 #  define SEVEN 26
 #  define EIGHT 28
 #  define NINE 25
-#  define KeyPress 2
-#  define KeyPressMask (1L<<0)
-#  define DestroyNotify 17
-#  define StructureNotifyMask (1L<<17)
+#  define KEYPRESS 2
+#  define KEYPRESSMASK 1
+#  define DESTROYNOTIFY 17
+#  define STRUCTURENOTIFYMASK 131072
 # else
 #  define ESC 65307
 #  define W 119

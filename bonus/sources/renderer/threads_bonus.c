@@ -6,7 +6,7 @@
 /*   By: nasamadi <nasamadi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/21 11:26:13 by nasamadi          #+#    #+#             */
-/*   Updated: 2023/09/21 11:26:14 by nasamadi         ###   ########.fr       */
+/*   Updated: 2023/09/24 21:43:22 by nasamadi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,8 +19,8 @@ void	allocate_thread_screen(t_world *world, t_runner threads[NUM_THREADS])
 	i = -1;
 	while (++i < NUM_THREADS)
 	{
-		threads[i].min_y = i * (HEIGHT / NUM_THREADS);
-		threads[i].max_y = (i + 1) * (HEIGHT / NUM_THREADS);
+		threads[i].min_y = i * (height() / NUM_THREADS);
+		threads[i].max_y = (i + 1) * (height() / NUM_THREADS);
 		threads[i].world = world;
 	}
 }

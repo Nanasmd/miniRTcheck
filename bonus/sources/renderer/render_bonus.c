@@ -6,7 +6,7 @@
 /*   By: nasamadi <nasamadi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/21 11:25:59 by nasamadi          #+#    #+#             */
-/*   Updated: 2023/09/21 11:26:00 by nasamadi         ###   ########.fr       */
+/*   Updated: 2023/09/24 20:07:17 by nasamadi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,7 +53,7 @@ void	*render(t_runner *worker)
 		coords.x = -1;
 		while (++coords.x < WIDTH)
 		{
-			closest.color = BLACK;
+			closest.color = black();
 			closest.shape = NULL;
 			closest.t = INFINITY;
 			factors = pixels_to_viewport(coords.x, coords.y);

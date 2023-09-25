@@ -6,7 +6,7 @@
 /*   By: nasamadi <nasamadi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/21 11:27:27 by nasamadi          #+#    #+#             */
-/*   Updated: 2023/09/22 19:14:02 by nasamadi         ###   ########.fr       */
+/*   Updated: 2023/09/25 11:13:29 by nasamadi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,20 +16,20 @@ void	init_graphics(t_world *w)
 {
 	w->disp.mlx = mlx_init();
 	if (!w->disp.mlx)
-		message(w, ERROR_MALLOC("init_graphics (mlx)"));
-	w->disp.win = mlx_new_window(w->disp.mlx, WIDTH, HEIGHT, "miniRT");
+		message(w, ERROR_MALLOC);
+	w->disp.win = mlx_new_window(w->disp.mlx, WIDTH, height(), "miniRT");
 	if (!w->disp.win)
-		message(w, ERROR_MALLOC("init_graphics (mlx window)"));
-	w->disp.img = mlx_new_image(w->disp.mlx, WIDTH, HEIGHT);
+		message(w, ERROR_MALLOC);
+	w->disp.img = mlx_new_image(w->disp.mlx, WIDTH, height());
 	if (!w->disp.img)
-		message(w, ERROR_MALLOC("init_graphics (mlx image)");
+		message(w, ERROR_MALLOC);
 	w->disp.addr = mlx_get_data_addr(w->disp.img, &w->disp.bpp,
 			&w->disp.line_length, &w->disp.endian);
 	if (!w->disp.addr)
-		message(w, ERROR_MALLOC("init_graphics (mlx image address)"));
-	w->disp.menu = mlx_new_image(w->disp.mlx, WIDTH / 6, HEIGHT);
+		message(w, ERROR_MALLOC);
+	w->disp.menu = mlx_new_image(w->disp.mlx, WIDTH / 6, height());
 	if (!w->disp.img)
-		message(w, ERROR_MALLOC("init_graphics (mlx menu image)"));
+		message(w, ERROR_MALLOC);
 }
 
 int	quit(t_world *world)
@@ -40,27 +40,8 @@ int	quit(t_world *world)
 
 int	on_keypress(int keycode, t_world *w)
 {
-	static t_menu_state	(*handlers[])(int, t_world *) = \
-	{
-		handle_closed_menu,
-		handle_opened_menu,
-		handle_camera_changes,
-		handle_amb_light_changes,
-		handle_light_choice,
-		handle_light_changes,
-		handle_sphere_choice,
-		handle_sphere_changes,
-		handle_plane_choice,
-		handle_plane_changes,
-		handle_cylinder_choice,
-		handle_cylinder_changes,
-		handle_cone_choice,
-		handle_cone_changes,
-	};
-
 	if (keycode == ESC)
 		quit(w);
-	w->state = handlers[w->state](keycode, w);
 	return (keycode);
 }
 
