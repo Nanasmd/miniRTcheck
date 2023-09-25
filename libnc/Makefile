@@ -6,7 +6,7 @@
 #    By: nasamadi <nasamadi@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/09/21 11:19:38 by nasamadi          #+#    #+#              #
-#    Updated: 2023/09/21 11:19:40 by nasamadi         ###   ########.fr        #
+#    Updated: 2023/09/25 13:31:19 by nasamadi         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -86,7 +86,7 @@ _FILES += vector_new vector_push vector_pop vector_clear vector_delete \
 			vector_copy vector_at vector_find vector_merge vector_print \
 			vector_first vector_last 
 
-_FILES += numlen count free clamp
+_FILES += numlen count free clamp defines
 
 OBJS			= $(_FILES:%=nc_%.o)
 TARGET			= $(addprefix $(OBJ_DIR)/, $(OBJS))
@@ -124,4 +124,4 @@ norm:
 	echo "\n\t$(BLUE)_/=\\_/=\\_/=\\_ *.c FILES _/=\\_/=\\_/=\\_$(RESET)\n"
 	norminette -R checkForbiddenSourceHeader $(shell find . -type f -name "*.c")
 
-.SILENT:
+.PHONY: all clean fclean re norm

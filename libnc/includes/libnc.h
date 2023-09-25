@@ -6,7 +6,7 @@
 /*   By: nasamadi <nasamadi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/21 11:19:56 by nasamadi          #+#    #+#             */
-/*   Updated: 2023/09/21 11:19:57 by nasamadi         ###   ########.fr       */
+/*   Updated: 2023/09/25 13:28:18 by nasamadi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,18 +32,18 @@
 //! Useful macros
 
 // Returns the maximum between a and b
-# define MAX(a, b)	((a) * (a > b) + (b) * (b > a))
+//# define MAX(a, b)	((a) * (a > b) + (b) * (b > a))
 // Returns the minimum between a and b
-# define MIN(a, b)	((a) * (a < b) + (b) * (b < a))
+//# define MIN(a, b)	((a) * (a < b) + (b) * (b < a))
 // Returns the absolute value of x
-# define ABS(x) 	((x) * (x > 0) - (x) * (x < 0))
+//# define ABS(x) 	((x) * (x > 0) - (x) * (x < 0))
 
 // Returns 1 if x is odd, 0 otherwise
-# define ODD(x) ((x) & 1)
+//# define ODD(x) ((x) & 1)
 // Returns 1 if x is even, 0 otherwise
-# define EVEN(x) !ODD(x)
+//# define EVEN(x) !ODD(x)
 
 // Return the value of the nth bit of x
-# define BIT(n) (1 << (n))
+//# define BIT(n) (1 << (n))
 
 #endif

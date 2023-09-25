@@ -6,7 +6,7 @@
 #    By: nasamadi <nasamadi@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/09/21 11:13:05 by nasamadi          #+#    #+#              #
-#    Updated: 2023/09/21 15:52:45 by nasamadi         ###   ########.fr        #
+#    Updated: 2023/09/25 13:30:24 by nasamadi         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -96,7 +96,7 @@ MANDATORY_FILES += read_map parser parse_shapes parse_illumination parse_utils
 MANDATORY_FILES += pixel render color light ray normal
 MANDATORY_FILES += vec3_add vec3_dot vec3_scale vec3_normalize vec3_cross vec3_length vec3_new \
 	vec3_sub vec3_cossine vec3_compare vec3_from_strings
-MANDATORY_FILES += math message
+MANDATORY_FILES += colors math message
 MANDATORY_FILES += main
 
 OBJS = $(patsubst %, $(OBJ_FOLDER)/%.o, $(MANDATORY_FILES))
@@ -104,14 +104,14 @@ OBJS = $(patsubst %, $(OBJ_FOLDER)/%.o, $(MANDATORY_FILES))
 BONUS_DEBUG	 += world_debug debug_1 debug_2
 BONUS_ENTITIES += world cylinder plane shape sphere lightsource cone
 BONUS_INTER	 += intersects pl_inter sp_inter cy_inter co_inter
-BONUS_PARSER 	 += read_map parser parse_shapes parse_illumination parse_utils
+BONUS_PARSER 	 += read_map parser parse_shapes1 parse_shapes2 parse_illumination parse_utils
 BONUS_RENDER 	 += color light pixel ray normal render shadow threads texture	
 BONUS_VEC 	 += vec3_add vec3_dot vec3_scale vec3_normalize vec3_cross vec3_length vec3_new \
 	vec3_sub vec3_cossine vec3_compare vec3_from_strings vec3_rotate vec3_between
-BONUS_UTILS	 += math message
-BONUS_MENU	 += ambient camera search_objects menu_display menu_handler light_display light_handler \
-	sphere_display sphere_handler cone_display cone_handler \
-	cylinder_display cylinder_handler plane_display plane_handler
+BONUS_UTILS	 += colors1 colors2 math message1 message2 message3
+#BONUS_MENU	 += ambient camera search_objects menu_display menu_handler light_display light_handler \
+#	sphere_display sphere_handler cone_display cone_handler \
+#	cylinder_display cylinder_handler plane_display plane_handler
 
 BONUS_FILES += $(BONUS_DEBUG) $(BONUS_ENTITIES) $(BONUS_INTER) $(BONUS_PARSER) $(BONUS_RENDER) \
 	$(BONUS_VEC) $(BONUS_UTILS) $(BONUS_MENU) main
@@ -164,22 +164,22 @@ all: $(NAME)
 
 #! Remove the echos and replace everything with a loading bar
 $(NAME): $(OBJ_FOLDER) $(OBJS)
-	echo "[$(CYAN)Compiling$(RESET)] $(GREEN)$(LIBNC)$(RESET)"
-	$(MAKE) -C $(LIBNC)
+	@echo "[$(CYAN)Compiling$(RESET)] $(GREEN)$(LIBNC)$(RESET)"
+	@ $(MAKE) -C $(LIBNC)
 
-	echo "[$(CYAN)Compiling$(RESET)] $(GREEN)$(GNL)$(RESET)"
-	$(MAKE) -C $(GNL)
+	@echo "[$(CYAN)Compiling$(RESET)] $(GREEN)$(GNL)$(RESET)"
+	@ $(MAKE) -C $(GNL)
 
-	echo "[$(CYAN)Compiling$(RESET)] $(GREEN)$(MLX)$(RESET)"
-	$(MAKE) -C $(MLX)
+	@echo "[$(CYAN)Compiling$(RESET)] $(GREEN)$(MLX)$(RESET)"
+	@ $(MAKE) -C $(MLX)
 
-	echo "[$(CYAN) Linking $(RESET)] $(GREEN)$(NAME)$(RESET)"
+	@echo "[$(CYAN) Linking $(RESET)] $(GREEN)$(NAME)$(RESET)"
 	$(CC) $(CFLAGS) $(CPPFLAGS) $(OBJS) -o $(NAME) $(LDFLAGS) 
 	
-	echo "$(GREEN)Done.$(RESET)"
+	@echo "$(GREEN)Done.$(RESET)"
 	
 $(OBJ_FOLDER)/%.o: %.c
-	echo "[$(CYAN)Compiling$(RESET)] $(CFLAGS) $(GREEN)$<$(RESET)"
+	@echo "[$(CYAN)Compiling$(RESET)] $(CFLAGS) $(GREEN)$<$(RESET)"
 	$(CC) $(CFLAGS) $(CPPFLAGS) -c $< -o $@
 
 re: fclean
@@ -190,39 +190,39 @@ bonus: .bonus
 .bonus: $(OBJ_FOLDER)_bonus $(BONUS_OBJS)
 	touch .bonus
 	
-	echo "[$(CYAN)Compiling$(RESET)] $(GREEN)$(LIBNC)$(RESET)"
-	$(MAKE) -C $(LIBNC)
+	@echo "[$(CYAN)Compiling$(RESET)] $(GREEN)$(LIBNC)$(RESET)"
+	@ $(MAKE) -C $(LIBNC)
 
-	echo "[$(CYAN)Compiling$(RESET)] $(GREEN)$(GNL)$(RESET)"
-	$(MAKE) -C $(GNL)
+	@echo "[$(CYAN)Compiling$(RESET)] $(GREEN)$(GNL)$(RESET)"
+	@ $(MAKE) -C $(GNL)
 
-	echo "[$(CYAN)Compiling$(RESET)] $(GREEN)$(MLX)$(RESET)"
-	$(MAKE) -C $(MLX)
+	@echo "[$(CYAN)Compiling$(RESET)] $(GREEN)$(MLX)$(RESET)"
+	@ $(MAKE) -C $(MLX)
 
-	echo "[$(CYAN) Linking $(RESET)] $(GREEN)$(NAME)$(RESET)"
+	@echo "[$(CYAN) Linking $(RESET)] $(GREEN)$(NAME)$(RESET)"
 	$(CC) $(CFLAGS) $(CPPFLAGS_BONUS) $(BONUS_OBJS) -o $(NAME) $(LDFLAGS) 
 	
-	echo "$(GREEN)Done.$(RESET)"
+	@echo "$(GREEN)Done.$(RESET)"
 
 $(OBJ_FOLDER)_bonus/%_bonus.o: %_bonus.c
-	echo "[$(CYAN)Compiling$(RESET)] $(CFLAGS) $(GREEN)$<$(RESET)"
+	@echo "[$(CYAN)Compiling$(RESET)] $(CFLAGS) $(GREEN)$<$(RESET)"
 	$(CC) $(CFLAGS) $(CPPFLAGS_BONUS) -c $< -o $@
 
 reb: fclean
-	$(MAKE) bonus
+	@ $(MAKE) bonus
 
 clean:	
-	echo "[$(RED) Deleted $(RESET)] $(GREEN)$(OBJ_FOLDER)$(RESET)"
-	echo "[$(RED) Deleted $(RESET)] $(GREEN)$(DEP_FOLDER)$(RESET)"
-	$(RM) $(OBJ_FOLDER) $(OBJ_FOLDER)_bonus $(DEP_FOLDER)
-	$(RM) .bonus
+	@echo "[$(RED) Deleted $(RESET)] $(GREEN)$(OBJ_FOLDER)$(RESET)"
+	@echo "[$(RED) Deleted $(RESET)] $(GREEN)$(DEP_FOLDER)$(RESET)"
+	@ $(RM) $(OBJ_FOLDER) $(OBJ_FOLDER)_bonus $(DEP_FOLDER)
+	@ $(RM) .bonus
 
 fclean: clean
-	$(MAKE) fclean -C $(LIBNC)
-	$(MAKE) fclean -C $(GNL)
-	$(MAKE) clean -C $(MLX)
+	@ $(MAKE) fclean -C $(LIBNC)
+	@ $(MAKE) fclean -C $(GNL)
+	@ $(MAKE) clean -C $(MLX)
 
-	echo "[$(RED) Deleted $(RESET)] $(GREEN)$(NAME)$(RESET)"
+	@echo "[$(RED) Deleted $(RESET)] $(GREEN)$(NAME)$(RESET)"
 	$(RM) $(NAME)
 
 #_/=\_/=\_/=\_/=\_/=\_/=\_/=\_/=\_/=\_/=\_/=\_/=\_/=\_/=\_/=\_/=\_/=\_/=\_/=\_/=\_/=\_/=\_/=\_
@@ -261,4 +261,4 @@ norm:
 	echo "\n\t$(BLUE)_/=\\_/=\\_/=\\_ *.c FILES _/=\\_/=\\_/=\\_$(RESET)\n"
 	norminette -R checkForbiddenSourceHeader $(shell find . -type f -name "*.c")
 
-.SILENT:
+.PHONY: all fast bfast run brun leaks norm bonus reb clean fclean re

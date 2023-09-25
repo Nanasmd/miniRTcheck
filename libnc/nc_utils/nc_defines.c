@@ -1,29 +1,38 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   nc_count.c                                         :+:      :+:    :+:   */
+/*   nc_defines.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: nasamadi <nasamadi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/09/21 11:33:24 by nasamadi          #+#    #+#             */
-/*   Updated: 2023/09/25 13:08:00 by nasamadi         ###   ########.fr       */
+/*   Created: 2023/09/25 13:04:06 by nasamadi          #+#    #+#             */
+/*   Updated: 2023/09/25 13:26:10 by nasamadi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libnc.h"
 
-int	nc_count(char *str, char c)
+double	max(double a, double b)
 {
-	int	counter;
-
-	counter = 0;
-	while (*str)
-		if (*str++ == c)
-			counter++;
-	return (counter);
+	return ((a * (a > b) + (b * (b > a))));
 }
 
-int	bit(int n)
+double	min(double a, double b)
 {
-	return (1 << n);
+	return ((a * (a < b) + (b * (b < a))));
+}
+
+int	abs_val(int x)
+{
+	return ((x * (x > 0) - x * (x < 0)));
+}
+
+int	odd(int x)
+{
+	return (x & 1);
+}
+
+int	even(int x)
+{
+	return (!odd(x));
 }
