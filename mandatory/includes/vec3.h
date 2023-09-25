@@ -6,7 +6,7 @@
 /*   By: nasamadi <nasamadi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/21 11:15:02 by nasamadi          #+#    #+#             */
-/*   Updated: 2023/09/21 11:15:03 by nasamadi         ###   ########.fr       */
+/*   Updated: 2023/09/24 17:05:54 by nasamadi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -110,5 +110,7 @@ double	vec3_cossine(t_vec3 v1, t_vec3 v2);
  * @return true if the vectors are equal, false otherwise
  */
 bool	vec3_compare(t_vec3 v1, t_vec3 v2);
+
+bool	is_vec3_in_range(t_vec3 vec, double min, double max);
 
 #endif

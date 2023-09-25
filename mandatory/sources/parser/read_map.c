@@ -6,7 +6,7 @@
 /*   By: nasamadi <nasamadi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/21 11:17:11 by nasamadi          #+#    #+#             */
-/*   Updated: 2023/09/22 19:11:14 by nasamadi         ###   ########.fr       */
+/*   Updated: 2023/09/24 21:16:24 by nasamadi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,7 +55,7 @@ char	**read_map(t_world *world, char *filename)
 	i = 0;
 	map = nc_matrix_new(get_filesize(world, filename), 0);
 	if (!map)
-		message(world, ERROR_MALLOC("read_map"));
+		message(world, ERROR_MALLOC);
 	fd = open(filename, O_RDONLY);
 	if (fd < 0)
 		message(world, ERROR_OPEN_FILE);

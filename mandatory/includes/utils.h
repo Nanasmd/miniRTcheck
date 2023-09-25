@@ -6,7 +6,7 @@
 /*   By: nasamadi <nasamadi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/21 11:14:58 by nasamadi          #+#    #+#             */
-/*   Updated: 2023/09/22 19:15:55 by nasamadi         ###   ########.fr       */
+/*   Updated: 2023/09/24 21:21:12 by nasamadi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,8 @@
  * @param world t_world struct with all the information of the world 
  * @param text text to be printed
  */
-void	message(t_world *world, char *text);
+void		message(t_world *world, char *text);
+void		error(const char *message);
 
 /**
  * @brief this function checks how many intersections the ray has with the
@@ -32,7 +33,7 @@ void	message(t_world *world, char *text);
  * @param eq t_equation struct with the equation information
  * @return number of intersections, -1 if there are no intersections
  */
-double	determinant(t_equation *eq);
+double		determinant(t_equation *eq);
 
 /**
  * @brief this function will solve the quadratic equation, store the results
@@ -42,6 +43,19 @@ double	determinant(t_equation *eq);
  * @param eq t_equation struct with the equation information
  * @return number of intersections, -1 if there are no intersections
  */
-double	solve(t_equation *eq);
+double		solve(t_equation *eq);
+
+t_color		blue(void);
+
+t_color		black(void);
+
+t_color		white(void);
+
+t_color		red(void);
+
+float		radians(float degrees);
+float		degrees(float radians);
+float		ratio(void);
+int			height(void);
 
 #endif

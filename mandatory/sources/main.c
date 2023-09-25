@@ -6,7 +6,7 @@
 /*   By: nasamadi <nasamadi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/21 11:18:54 by nasamadi          #+#    #+#             */
-/*   Updated: 2023/09/22 19:10:19 by nasamadi         ###   ########.fr       */
+/*   Updated: 2023/09/25 10:57:14 by nasamadi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,17 +16,17 @@ void	init_graphics(t_world *w)
 {
 	w->disp.mlx = mlx_init();
 	if (!w->disp.mlx)
-		message(w, ERROR_MALLOC("init_graphics (mlx)"));
-	w->disp.win = mlx_new_window(w->disp.mlx, WIDTH, HEIGHT, "miniRT");
+		message(w, ERROR_MALLOC);
+	w->disp.win = mlx_new_window(w->disp.mlx, WIDTH, height(), "miniRT");
 	if (!w->disp.win)
-		message(w, ERROR_MALLOC("init_graphics (mlx window)"));
-	w->disp.img = mlx_new_image(w->disp.mlx, WIDTH, HEIGHT);
+		message(w, ERROR_MALLOC);
+	w->disp.img = mlx_new_image(w->disp.mlx, WIDTH, height());
 	if (!w->disp.img)
-		message(w, ERROR_MALLOC("init_graphics (mlx image)"));
+		message(w, ERROR_MALLOC);
 	w->disp.addr = mlx_get_data_addr(w->disp.img, &w->disp.bpp, \
 		&w->disp.line_length, &w->disp.endian);
 	if (!w->disp.addr)
-		message(w, ERROR_MALLOC("init_graphics (mlx image address)"));
+		message(w, ERROR_MALLOC);
 }
 
 int	quit(t_world *world)

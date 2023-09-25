@@ -6,7 +6,7 @@
 /*   By: nasamadi <nasamadi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/21 11:14:11 by nasamadi          #+#    #+#             */
-/*   Updated: 2023/09/21 11:14:13 by nasamadi         ###   ########.fr       */
+/*   Updated: 2023/09/24 17:23:04 by nasamadi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,14 @@
 # define ENTITIES_H
 
 # include "miniRT.h"
+
+typedef struct s_cylinder_params
+{
+	char		**c;
+	char		**n;
+	char		**cl;
+	char		**tokens;
+}				t_cylinder_params;
 
 /**
  * @brief this function will check what type of shape it is and call the
@@ -104,6 +112,7 @@ t_vec3		sphere_normal(t_hit *inter, t_ray *ray);
  * @param tokens string array with cylinder information
  * @return true if the cylinder was created correctly, false otherwise
  */
+bool		init_cylinder_values(t_cylinder *cy, t_cylinder_params *params);
 bool		cylinder_from_strings(t_cylinder *cy, char **tokens);
 
 /**

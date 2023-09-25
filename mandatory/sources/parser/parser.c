@@ -6,7 +6,7 @@
 /*   By: nasamadi <nasamadi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/21 11:17:07 by nasamadi          #+#    #+#             */
-/*   Updated: 2023/09/22 19:10:45 by nasamadi         ###   ########.fr       */
+/*   Updated: 2023/09/23 11:54:37 by nasamadi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,7 +36,7 @@ bool	identifying(t_world *world, char **tokens, int count[3], char *checkid)
 	else if (!nc_strcmp("cy", tokens[0]))
 		return (parse_cylinder(world->shapes, tokens));
 	else
-		return (ERROR("Error parsing entities"), false);
+		return (error("Error parsing entities"), false);
 	return (true);
 }
 
@@ -74,7 +74,7 @@ t_world	*parse(char *filename)
 		message(NULL, ERROR_NOT_RT);
 	world = world_new();
 	if (!world)
-		message(NULL, ERROR_MALLOC("t_world struct"));
+		message(NULL, ERROR_MALLOC);
 	world->map = read_map(world, filename);
 	if (nc_matrix_size(world->map) == 0)
 		message(world, ERROR_EMPTY_MAP);

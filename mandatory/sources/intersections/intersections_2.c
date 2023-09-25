@@ -6,7 +6,7 @@
 /*   By: nasamadi <nasamadi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/21 11:16:44 by nasamadi          #+#    #+#             */
-/*   Updated: 2023/09/21 11:16:45 by nasamadi         ###   ########.fr       */
+/*   Updated: 2023/09/23 11:41:47 by nasamadi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,7 +60,7 @@ double	cap_intersection(t_cylinder *cy, t_ray *ray, t_vec3 cap)
 	t_plane	plane;
 	t_hit	inter;
 
-	plane = plane_from_numbers(cap, cy->normal, BLACK);
+	plane = plane_from_numbers(cap, cy->normal, black());
 	if (plane_intersect(&plane, ray, &inter))
 		return (inter.t);
 	return (-1);

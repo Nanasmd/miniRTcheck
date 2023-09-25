@@ -6,7 +6,7 @@
 /*   By: nasamadi <nasamadi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/21 11:17:41 by nasamadi          #+#    #+#             */
-/*   Updated: 2023/09/21 11:17:42 by nasamadi         ###   ########.fr       */
+/*   Updated: 2023/09/24 20:58:36 by nasamadi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,12 +45,12 @@ int	render(t_world *w)
 	t_hit	closest;
 
 	coords.y = -1;
-	while (++coords.y < HEIGHT)
+	while (++coords.y < (WIDTH / ratio()))
 	{
 		coords.x = -1;
 		while (++coords.x < WIDTH)
 		{
-			closest.color = BLACK;
+			closest.color = black();
 			closest.shape = NULL;
 			closest.t = INFINITY;
 			factors = pixels_to_viewport(coords.x, coords.y);

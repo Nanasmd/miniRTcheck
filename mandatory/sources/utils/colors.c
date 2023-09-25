@@ -1,47 +1,33 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   message.c                                          :+:      :+:    :+:   */
+/*   colors.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: nasamadi <nasamadi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/09/21 11:17:56 by nasamadi          #+#    #+#             */
-/*   Updated: 2023/09/24 21:20:42 by nasamadi         ###   ########.fr       */
+/*   Created: 2023/09/23 11:44:20 by nasamadi          #+#    #+#             */
+/*   Updated: 2023/09/24 20:31:38 by nasamadi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "miniRT.h"
 
-void	message(t_world *world, char *text)
+t_color	blue(void)
 {
-	destroy_world(&world);
-	printf("Error\n%s\n", text);
-	exit(EXIT_FAILURE);
+	return ((t_color){0, 0, 0, 255});
 }
 
-// Old Macros
-// # define HERE 		printf("HERE\n");
-// # define ERROR(m)	printf("Error\n%s\n", m)
-
-// New Functions
-void	here(void)
+t_color	black(void)
 {
-	printf("HERE\n");
+	return ((t_color){0, 0, 0, 0});
 }
 
-void	error(const char *message)
+t_color	white(void)
 {
-	printf("Error\n%s\n", message);
+	return ((t_color){0, 255, 255, 255});
 }
 
-// New Functions
-
-float	ratio(void)
+t_color	red(void)
 {
-	return (16.0 / 9.0);
-}
-
-int	height(void)
-{
-	return (WIDTH / ratio());
+	return ((t_color){0, 255, 0, 0});
 }

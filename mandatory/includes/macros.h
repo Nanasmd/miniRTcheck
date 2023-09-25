@@ -6,7 +6,7 @@
 /*   By: nasamadi <nasamadi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/21 11:14:17 by nasamadi          #+#    #+#             */
-/*   Updated: 2023/09/22 19:21:07 by nasamadi         ###   ########.fr       */
+/*   Updated: 2023/09/24 21:20:14 by nasamadi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,9 +24,9 @@
 
 //! Debug related macros
 
-# define DEBUG
-# define HERE 		printf("HERE\n");
-# define ERROR(m)	printf("Error\n%s\n", m)
+//# define DEBUG
+//# define HERE 		printf("HERE\n");
+//# define ERROR(m)	printf("Error\n%s\n", m)
 
 //! Parsing macros
 
@@ -48,27 +48,25 @@
 # define ERROR_EMPTY_MAP	"Empty map."
 # define ERROR_NO_CAMERA	"No camera in the map."
 # define ERROR_TOO_MANY		"Found more than 1 A, C or L entities"
-# define ERROR_MALLOC(str)  "Failed allocation on "str"."
+# define ERROR_MALLOC       "Failed allocation."
 # define ERROR_USAGE 		"Usage: ./miniRT <scene>.rt"
 
 //! Math macros 
 
 # define PI 3.1415926535f
-# define RADIANS(deg) ((deg * PI) / 180.0f)
-# define DEGREES(rad) ((rad * 180.0f) / PI)
 # define EPSILON 0.0001
 
 //! Fixed t_color structs
 
-# define BLUE		(t_color){0, 0, 0, 255}
-# define BLACK		(t_color){0, 0, 0, 0}
-# define WHITE		(t_color){0, 255, 255, 255}
-# define RED		(t_color){0, 255, 0, 0}
+//# define BLUE		(t_color){0, 0, 0, 255}
+//# define BLACK		(t_color){0, 0, 0, 0}
+//# define WHITE		(t_color){0, 255, 255, 255}
+//# define RED		(t_color){0, 255, 0, 0}
 
 //! Fixed t_vec3 structs
 
-# define UPGUIDE		(t_vec3){0.0, 1.0, 0.0}
-# define VEC_EPSILON	(t_vec3){EPSILON, EPSILON, EPSILON}
+/*# define UPGUIDE		(t_vec3){0.0, 1.0, 0.0}
+# define VEC_EPSILON	(t_vec3){EPSILON, EPSILON, EPSILON}*/
 
 //! Viewport and window macros
 
@@ -78,8 +76,8 @@
 #  define WIDTH 1920
 # endif
 
-# define RATIO 	(16.0/9.0)
-# define HEIGHT (WIDTH/RATIO)
+/*# define RATIO 	(16.0/9.0)
+# define HEIGHT (WIDTH/RATIO)*/
 
 //! Minilibx events
 
@@ -92,9 +90,9 @@
 #  define C 8
 #  define V 9
 #  define KEYPRESS 2
-#  define KEYPRESSMASK (1L<<0)
+#  define KEYPRESSMASK 1
 #  define DESTROYNOTIFY 17
-#  define STRUCTURENOTIFYMASK (1L<<17)
+#  define STRUCTURENOTIFYMASK 131072
 # else
 #  define ESC 65307
 #  define W 119
